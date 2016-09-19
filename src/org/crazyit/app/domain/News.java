@@ -1,6 +1,8 @@
 package org.crazyit.app.domain;
 
 import javax.persistence.*;
+
+import org.hibernate.annotations.Formula;
 /**
  * Description:
  * <br/>网站: <a href="http://www.crazyit.org">疯狂Java联盟</a>
@@ -22,8 +24,27 @@ public class News
 	// 消息标题
 	private String title;
 	// 消息内容
+	
 	private String content;
 
+	@Enumerated(EnumType.STRING)
+	@Column(name="happen_season")
+	private Season happenSeason;
+	
+	public Season getHappenSeason() {
+		return happenSeason;
+	}
+	public void setHappenSeason(Season happenSeason) {
+		this.happenSeason = happenSeason;
+	}
+	@Formula("(select concat(nt.title,nt.content) from news_inf nt where nt.id = id)")
+	private String fullContent;
+	public String getFullContent() {
+		return fullContent;
+	}
+	public void setFullContent(String fullContent) {
+		this.fullContent = fullContent;
+	}
 	// id的setter和getter方法
 	public void setId(Integer id)
 	{

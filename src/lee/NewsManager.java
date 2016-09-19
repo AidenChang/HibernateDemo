@@ -37,11 +37,14 @@ public class NewsManager
 		// 创建消息对象
 		News n = new News();
 		// 设置消息标题和消息内容
-		n.setTitle("疯狂Java联盟成立了");
-		n.setContent("疯狂Java联盟成立了，"
-			+ "网站地址http://www.crazyit.org");
+		n.setTitle("疯狂Java联盟1成立了");
+		n.setContent("疯狂Java联盟1成立了，"
+			+ "网站地址http://www.crazyit1.org");
+		n.setHappenSeason(Season.春季);
 		// 保存消息
 		sess.save(n);
+//		News n = (News) sess.get(News.class, 1);
+//		System.out.println(n.getFullContent());
 		// 提交事务
 		tx.commit();
 		// 关闭Session
